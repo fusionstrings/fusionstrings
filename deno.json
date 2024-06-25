@@ -1,13 +1,25 @@
 {
+  "name": "@fusionstrings/www",
   "imports": {
-    "#functions": "./functions.js",
-    "#home": "./home.js"
+    "#browser-importmap": "./source/importmaps/importmap.json",
+    "#home": "./source/home.ts",
+    "#home-dom": "./source/components/home-dom.ts",
+    "#http/file_server": "jsr:@std/http@0.224.4/file-server",
+    "#on-listen": "https://raw.githubusercontent.com/fusionstrings/1729/e414f8f3dbfec2a02d8645d17f59a1c508a76cb2/source/on-listen.ts",
+    "#request-handler": "https://raw.githubusercontent.com/fusionstrings/1729/e980debab8853cc60ad053ab1af575c6ab10be28/source/request-handler.ts",
+    "linkedom": "npm:linkedom"
   },
   "tasks": {
-    "dev": "deno run --inspect --allow-net --allow-env --allow-read ./request-handler.js",
-    "start": "deno run --allow-net --allow-env --allow-read ./request-handler.js"
+    "dev": "deno run --inspect --allow-net --allow-env --allow-read ./server.ts",
+    "start": "deno run --allow-net --allow-env --allow-read server.ts"
   },
   "compilerOptions": {
-    "allowJs": true
+    "allowJs": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ]
   }
 }

@@ -1,0 +1,21 @@
+{
+    "imports": {
+        "#css/reset.css": "./www/css/reset.css",
+        "#css/style.css": "./www/css/style.css",
+        "#css/min-width-900px.css": "./www/css/min-width-900px.css",
+        "#favicon.ico": "./www/images/favicon.ico",
+        "#home": "./www/index.html",
+        "#images/apple-touch-icon.png": "./www/images/apple-touch-icon.png",
+        "#images/favicon-16x16.png": "./www/images/favicon-16x16.png",
+        "#images/favicon-32x32.png": "./www/images/favicon-32x32.png",
+        "#images/favicon.png": "./www/images/favicon.png",
+        "#images/favicon.svg": "./www/images/favicon.svg",
+        "#images/fusionstrings-logo-alt-optimized.svg": "./www/images/fusionstrings-logo-alt-optimized.svg",
+        "#images/iceberg-transparent-optimized.svg": "./www/images/iceberg-transparent-optimized.svg",
+        "#images/safari-pinned-tab.svg": "./www/images/safari-pinned-tab.svg",
+        "#pdf/dilip-shukla-resume.pdf": "./www/pdf/dilip-shukla-resume.pdf",
+        "#scripts/main.js.map": "./www/scripts/main.js.map",
+        "#scripts/main.js": "./www/scripts/main.js",
+        "#site.webmanifest": "./www/site.webmanifest"
+    }
+}
