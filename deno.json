@@ -21,5 +21,10 @@
       "dom.asynciterable",
       "deno.ns"
     ]
+  },
+  "deploy": {
+    "exclude": [],
+    "include": [],
+    "entrypoint": "server.ts"
   }
 }
