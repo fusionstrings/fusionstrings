@@ -14,10 +14,12 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: list
+        run: ls -A
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: fusionstrings # the name of the project on Deno Deploy
-          entrypoint: ./server.ts # the entrypoint to deploy
-          import-map: ./deno.json
+          entrypoint: server.ts # the entrypoint to deploy
+          import-map: deno.json
           # root: '.'
