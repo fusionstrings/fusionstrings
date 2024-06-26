@@ -1,15 +1,14 @@
+import { requestHandler } from "#request-handler";
 import { onListen } from "#on-listen";
 
-if (import.meta?.main) {
-  Deno.serve({
-    onListen,
-  }, (request: Request, connection: Deno.ServeHandlerInfo) => {
-    // Get information about the incoming request
-    const method = request.method;
-    const ip = connection.remoteAddr.hostname;
-    console.log(`${ip} just made an HTTP ${method} request.`);
+const PORT  =  Deno.env.get('PORT');
 
-    // Return a web standard Response object
-    return new Response("Hello, world!");
-  });
+const serverOptions: Deno.ServeOptions = {
+    onListen,
+    port: PORT ? parseInt(PORT, 10) : 1729
 }
+
+if (import.meta?.main) {
+    Deno.serve(serverOptions, requestHandler);
+}
+
