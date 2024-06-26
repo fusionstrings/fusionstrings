@@ -1,12 +1,23 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ creation ]
+  pull_request:
+    branches: [ creation ]
+
 jobs:
   deploy:
+    name: deploy
+    runs-on: ubuntu-latest
     permissions:
-      id-token: write # required
+      id-token: write
       contents: read
     steps:
-        - name: Deploy to Deno Deploy
+      - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-            project: fusionstrings
-            entrypoint: server.ts
-            import-map: deno.json
+          project: fusionstrings # the name of the project on Deno Deploy
+          entrypoint: ./server.ts # the entrypoint to deploy
+          import-map: ./deno.json
+          # root: '.'
