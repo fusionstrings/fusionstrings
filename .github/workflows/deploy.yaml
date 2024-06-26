@@ -1,0 +1,12 @@
+jobs:
+  deploy:
+    permissions:
+      id-token: write # required
+      contents: read
+    steps:
+        - name: Deploy to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+            project: fusionstrings
+            entrypoint: server.ts
+            import-map: deno.json
