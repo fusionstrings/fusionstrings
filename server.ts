@@ -11,4 +11,3 @@ const serverOptions: Deno.ServeOptions = {
 if (import.meta?.main) {
     Deno.serve(serverOptions, requestHandler);
 }
-
