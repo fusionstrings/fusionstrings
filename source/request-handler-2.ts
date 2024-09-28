@@ -19,7 +19,7 @@ async function requestHandler(request: Request): Promise<Response> {
             return fetch(resourcePath)
         }
 
-        const { requestHandlerHTTP } = await import(`#home`);
+        const { requestHandlerHTTP } = await import(`./home.ts`);
         return requestHandlerHTTP(request);
     } catch (error) {
         console.error(error.message || error.toString());
