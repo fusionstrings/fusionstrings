@@ -1,17 +1,24 @@
 {
   "name": "@fusionstrings/www",
+  "version": "0.1.0",
+  "exports": "./server.ts",
   "imports": {
     "#browser-importmap": "./source/importmaps/importmap.json",
+    "#comark": "https://deno.land/x/comrak@0.1.1/mod.ts",
     "#home": "./source/home.ts",
-    "#home-dom": "./source/components/home-dom.ts",
-    "#http/file_server": "jsr:@std/http@0.224.4/file-server",
-    "#on-listen": "https://raw.githubusercontent.com/fusionstrings/1729/e414f8f3dbfec2a02d8645d17f59a1c508a76cb2/source/on-listen.ts",
-    "#request-handler": "https://raw.githubusercontent.com/fusionstrings/1729/e980debab8853cc60ad053ab1af575c6ab10be28/source/request-handler.ts",
-    "linkedom": "npm:linkedom"
+    "#markdown": "./source/custom-elements/markdown.ts",
+    "#request-handler": "./source/request-handler.ts",
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+    "@deno/emit": "jsr:@deno/emit@^0.45.0",
+    "@std/http": "jsr:@std/http@^1.0.7",
+    "linkedom": "npm:linkedom@^0.18.5"
   },
   "tasks": {
-    "dev": "deno run --inspect --allow-net --allow-env --allow-read ./server.ts",
-    "start": "deno run --allow-net --allow-env --allow-read server.ts"
+    "dnt": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run source/functions/dnt.ts",
+    "dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src source/generated/esm --dist www --sourcemap",
+    "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch ./server.ts",
+    "start": "deno run --allow-net --allow-env --allow-read server.ts",
+    "bundle": "deno run --allow-env --allow-read --allow-write --allow-net source/functions/bundle.ts"
   },
   "compilerOptions": {
     "allowJs": true,

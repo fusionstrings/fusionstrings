@@ -23,48 +23,49 @@ header{
     margin: 5vw 0;
 }
 
-h1#logo {
+header h1 {
     text-align: center;
     line-height: 10vmin;
 }
 
-h1#logo a{
+header h1::after, header h1::before{
+    display: none;
+}
+
+/* [slot="fusionstrings-header"] h1 a, ::slotted(.header-content) */ header h1 a{
     display: inline-block;
+    background: transparent url(/images/fusionstrings-logo-alt-optimized.svg) center center no-repeat;
+    text-indent: -9999px;
+    height: 100px;
+    width: 300px;
+    background-size: cover;
 }
 
 h1#logo images{
     height: 10vmin;
 }
 
-main, footer {
+main, footer, aside {
 	padding: 0 5vw;
 }
+main{
+    width: 60vw;
+    margin: 0 auto;
+}
 
-#hero .title{
+[is="fusionstrings-hero"]{
 	text-align: left;
 }
 
-#hero .title h1, #hero .title h2 {
+[is="fusionstrings-hero"] .greeting {
 	margin: 0 0 2vw;
-}
-
-#hero .title h2{
 	font-size: 12vw;
     line-height: 1;
+    font-weight: 700;
 }
 
-#hero .title h3{
-	font-size: 4vw;
-    word-spacing: -2px;
-    line-height: 1;
-}
-
-#hero .title h1 .alt, #hero .title h2 .alt {
+[is="fusionstrings-hero"] .intro {
 	font-weight: normal;
-    display: block;
-}
-
-.title h2 .alt{
     display: block;
     font-size: 8vw;
 }
@@ -87,7 +88,7 @@ main, footer {
     margin-bottom: 5vw;
 }
 
-#hero .hero-cta{
+[is="fusionstrings-hero"] .hero-cta{
 	margin-top: 2vw;
 	font-family: 'Bebas Neue', cursive;
 	display: inline-block;

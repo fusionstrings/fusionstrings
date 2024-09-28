@@ -13,30 +13,30 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="site.webmanifest">
-
-    <title><!-- __TITLE__ --></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/magick.css"
-        onload="this.rel='stylesheet';this.onload=null" />
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magick.css" />
-    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acab/reset.css@0.10.0/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Arapey&display=swap">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="(min-width: 900px)" href="css/min-width-900px.css">
 
-    <script type="importmap">
-        {}
-    </script>
+    <title>fusionstrings: Frontend Web Developer</title>
 
-    <script type="module">
-        import { main } from '@fusionstrings/1729';
-        globalThis.addEventListener("DOMContentLoaded", main);
-    </script>
 </head>
 
 <body>
-    <header><!-- __HEADER__ --></header>
-    <main><!-- __MAIN__ --></main>
-    <footer><!-- __FOOTER__ --></footer>
+    <header>
+        <h1><a href="/">fusionstrings: Frontend Web Developer</a></h1>
+    </header>
+
+    <main>
+        <fusionstrings-markdown src="/docs/main.md"></fusionstrings-markdown>
+        <nav>
+            <fusionstrings-markdown src="/docs/nav.md"></fusionstrings-markdown>
+        </nav>
+    </main>
+
+    <footer>
+        &copy; 2024
+    </footer>
 </body>
 
 </html>

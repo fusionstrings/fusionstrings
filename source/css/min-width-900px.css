@@ -2,7 +2,7 @@ body{
     background-position: 40vw 2vh;
 }
 
-#hero, nav, .content{
+[is="fusionstrings-hero"], nav, .content{
     width: 60vw;
     margin: 0 auto;
 }
@@ -15,19 +15,16 @@ nav ul li{
     font-size: 1.5vw;
 }
 
-#hero .title h2 {
+[is="fusionstrings-hero"] .greeting {
     font-size: 14vw;
 }
 
-.title h2 .alt{
+[is="fusionstrings-hero"] .intro{
     font-size: 5vw;
 }
 
-#hero .title h1 {
-    font-size: 3.1vw;
-}
 
-#hero .hero-cta{
+[is="fusionstrings-hero"] .hero-cta{
 	padding-right: 3vw;
 	font-size: 2.5vw;
 }
@@ -46,7 +43,7 @@ nav ul li{
 main{
     padding-bottom: 20px;
 }
-footer{
+aside{
     position: absolute;
     top: calc(10.4vw + 10vmin);
 }

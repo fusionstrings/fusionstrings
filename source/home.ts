@@ -1,60 +1,49 @@
-import { parseHTML } from "linkedom";
-import * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
+import { parseHTML, parseJSON } from "linkedom";
+import * as comrak from "#comark";
 
 await comrak.init();
 
 const MARKDOWN_OPTIONS: comrak.ComrakOptions = {
   extension: {
     autolink: true,
+    footnotes: true,
     descriptionLists: true,
     strikethrough: true,
     superscript: true,
     table: true,
     tagfilter: true,
   },
+  parse: { smart: true },
+  render: { unsafe: true }
 };
 
-async function requestHandlerHTTP() {
+async function requestHandlerHTTP(request: Request) {
   try {
     const templateURL = new URL("./templates/page.html", import.meta.url)
       .toString();
     const template = await fetch(templateURL);
     const html = await template.text();
+
     const { document, customElements, HTMLElement } = parseHTML(html);
+   
+    await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
 
-    customElements.define(
-      "fusionstrings-1729",
-      class extends HTMLElement {
-        connectedCallback() {
-          console.log("fusionstrings-1729 connected 🥳");
-        }
-      },
-    );
+      const src = markdownElement.getAttribute('src');
 
-    const markdownURL = new URL("./docs/home.md", import.meta.url)
-      .toString();
-    const response = await fetch(markdownURL);
+      if (src) {
+        const markdownURL = new URL(src, request.url).toString()
+        const markdownResponse = await fetch(markdownURL)
+        const markdown = await markdownResponse.text()
 
-    const markdown = await response.text();
+        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
+        markdownElement.innerHTML = html
+      }
+      return markdownElement
+    }))
 
+    const response = document.toString();
 
-    const element1729 = document.createElement("fusionstrings-1729");
-    element1729.innerHTML = comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS);
-
-    const mainElement = document.querySelector("main");
-
-    if (mainElement) {
-      mainElement.appendChild(element1729);
-    }
-
-    const importmapElement = document.querySelector('script[type="importmap"]');
-
-    if (importmapElement) {
-      const importmap = await Deno.readTextFile("./www/browser.importmap");
-      importmapElement.innerHTML = importmap;
-    }
-
-    return new Response(document.toString(), {
+    return new Response(response, {
       headers: { "content-type": "text/html" },
     });
   } catch (error) {
