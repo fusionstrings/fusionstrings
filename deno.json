@@ -21,6 +21,7 @@
     "#markdown": "./source/custom-elements/markdown.ts",
     "#on-listen": "./source/on-listen.ts",
     "#request-handler": "./source/request-handler.ts",
+    "#request-handler-2": "./source/request-handler-2.ts",
     "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
     "@deno/emit": "jsr:@deno/emit@^0.45.0",
     "@std/http": "jsr:@std/http@^1.0.7",
