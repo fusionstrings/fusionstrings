@@ -1,5 +1,13 @@
-import { requestHandler as fetch } from "#request-handler";
+import { requestHandler } from "#request-handler";
+import { onListen } from "#on-listen";
 
-export default {
-    fetch
+const PORT  =  Deno.env.get('PORT');
+
+const serverOptions: Deno.ServeOptions = {
+    onListen,
+    port: PORT ? parseInt(PORT, 10) : 1729
+}
+
+if (import.meta?.main) {
+    Deno.serve(serverOptions, requestHandler);
 }
