@@ -24,8 +24,8 @@ async function requestHandlerHTTP(request: Request) {
     const template = await fetch(templateURL);
     const html = await template.text();
 
-    const { document, customElements, HTMLElement } = parseHTML(html);
-   
+    const { document } = parseHTML(html);
+
     // await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
 
     //   const src = markdownElement.getAttribute('src');
@@ -40,6 +40,19 @@ async function requestHandlerHTTP(request: Request) {
     //   }
     //   return markdownElement
     // }))
+
+    for await (const markdownElement of document.querySelectorAll('fusionstrings-markdown')) {
+      const src = markdownElement.getAttribute('src');
+
+      if (src) {
+        const markdownURL = new URL(`./${src}`, import.meta.url).toString()
+        const markdownResponse = await fetch(markdownURL)
+        const markdown = await markdownResponse.text()
+
+        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
+        markdownElement.innerHTML = html
+      }
+    }
 
     const response = document.toString();
 
