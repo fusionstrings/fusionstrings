@@ -24,7 +24,7 @@ async function requestHandlerHTTP(request: Request) {
     const template = await fetch(templateURL);
     const html = await template.text();
 
-    // const { document, customElements, HTMLElement } = parseHTML(html);
+    const { document, customElements, HTMLElement } = parseHTML(html);
    
     // await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
 
@@ -41,9 +41,9 @@ async function requestHandlerHTTP(request: Request) {
     //   return markdownElement
     // }))
 
-    // const response = document.toString();
+    const response = document.toString();
 
-    return new Response(html, {
+    return new Response(response, {
       headers: { "content-type": "text/html" },
     });
   } catch (error) {
