@@ -1,5 +1,4 @@
 import { serveFile } from "@std/http";
-import { requestHandlerHTTP } from "#home";
 import browserImportmap from '#browser-importmap' with { type: 'json' };
 type BrowserAssets = keyof typeof browserImportmap['imports'];
 
@@ -20,7 +19,7 @@ async function requestHandler(request: Request): Promise<Response> {
             return fetch(resourcePath)
         }
 
-        //const { requestHandlerHTTP } = await import(`./home.ts`);
+        const { requestHandlerHTTP } = await import(`#home`);
         return requestHandlerHTTP(request);
     } catch (error) {
         console.error(error.message || error.toString());
