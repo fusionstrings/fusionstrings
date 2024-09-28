@@ -24,26 +24,26 @@ async function requestHandlerHTTP(request: Request) {
     const template = await fetch(templateURL);
     const html = await template.text();
 
-    const { document, customElements, HTMLElement } = parseHTML(html);
+    // const { document, customElements, HTMLElement } = parseHTML(html);
    
-    await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
+    // await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
 
-      const src = markdownElement.getAttribute('src');
+    //   const src = markdownElement.getAttribute('src');
 
-      if (src) {
-        const markdownURL = new URL(src, request.url).toString()
-        const markdownResponse = await fetch(markdownURL)
-        const markdown = await markdownResponse.text()
+    //   if (src) {
+    //     const markdownURL = new URL(src, request.url).toString()
+    //     const markdownResponse = await fetch(markdownURL)
+    //     const markdown = await markdownResponse.text()
 
-        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
-        markdownElement.innerHTML = html
-      }
-      return markdownElement
-    }))
+    //     const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
+    //     markdownElement.innerHTML = html
+    //   }
+    //   return markdownElement
+    // }))
 
-    const response = document.toString();
+    // const response = document.toString();
 
-    return new Response(response, {
+    return new Response(html, {
       headers: { "content-type": "text/html" },
     });
   } catch (error) {
