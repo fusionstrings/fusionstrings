@@ -29,10 +29,10 @@
   "name": "@fusionstrings/www",
   "tasks": {
     "bundle": "deno run --allow-env --allow-read --allow-write --allow-net source/functions/bundle.ts",
-    "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch ./server.ts",
+    "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch ./serve.ts",
     "dnt": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run source/functions/dnt.ts",
     "dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src source/generated/esm --dist www --sourcemap",
-    "start": "deno serve --allow-net --allow-env --allow-read --parallel server.ts"
+    "start": "deno run --allow-net --allow-env --allow-read server.ts"
   },
   "version": "0.1.0"
 }
