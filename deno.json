@@ -9,7 +9,7 @@
     ]
   },
   "deploy": {
-    "entrypoint": "server.ts",
+    "entrypoint": "source/request-handler-deploy.ts",
     "exclude": [],
     "include": []
   },
