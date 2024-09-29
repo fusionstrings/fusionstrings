@@ -21,7 +21,6 @@
     "#markdown": "./source/custom-elements/markdown.ts",
     "#on-listen": "./source/on-listen.ts",
     "#request-handler": "./source/request-handler.ts",
-    "#request-handler-2": "./source/request-handler-2.ts",
     "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
     "@deno/emit": "jsr:@deno/emit@^0.45.0",
     "@std/http": "jsr:@std/http@^1.0.7",
@@ -30,7 +29,7 @@
   "name": "@fusionstrings/www",
   "tasks": {
     "bundle": "deno run --allow-env --allow-read --allow-write --allow-net source/functions/bundle.ts",
-    "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch ./serve.ts",
+    "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch source/request-handler.ts",
     "dnt": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run source/functions/dnt.ts",
     "dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src source/generated/esm --dist www --sourcemap",
     "start": "deno run --allow-net --allow-env --allow-read server.ts"

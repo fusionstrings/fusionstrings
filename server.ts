@@ -1,4 +1,4 @@
-import { requestHandler } from "#request-handler-2";
+import { requestHandler } from "#request-handler";
 import { onListen } from "#on-listen";
 
 const PORT  =  Deno.env.get('PORT');

@@ -32,3 +32,7 @@ async function requestHandler(request: Request): Promise<Response> {
 }
 
 export { requestHandler }
+
+export default {
+    fetch: requestHandler
+}
