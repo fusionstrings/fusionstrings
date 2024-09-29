@@ -1,3 +1,7 @@
-#hero .title h1{
-	font-size: 5vw;
+body {
+	background: #fff url(/images/iceberg-transparent-optimized.svg) 50vw 2vh no-repeat;
+}
+
+nav ul {
+	justify-content: normal;
 }

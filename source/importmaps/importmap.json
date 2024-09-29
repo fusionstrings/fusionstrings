@@ -2,6 +2,7 @@
     "imports": {
         "#comrak-JaEBzudL.js": "./www/comrak-JaEBzudL.js",
         "#comrak-JaEBzudL.js.map": "./www/comrak-JaEBzudL.js.map",
+        "#css/min-width-700px.css": "./source/css/min-width-700px.css",
         "#css/min-width-900px.css": "./source/css/min-width-900px.css",
         "#css/reset.css": "./source/css/reset.css",
         "#css/style.css": "./source/css/style.css",
