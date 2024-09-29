@@ -1,0 +1,97 @@
+:root {
+    --font-size-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+    --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+    --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+    --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+    --font-size-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+    --font-size-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+    --font-size-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+}
+
+body {
+    font-family: 'Arapey', serif;
+    color: #000;
+    font-size: var(--font-size-md);
+    background: #fff url(/images/iceberg-transparent-optimized.svg) bottom center no-repeat;
+    background-size: contain;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+nav,
+main,
+footer,
+aside {
+    padding: 0 5vw;
+}
+
+header {
+    margin: 5vw 0;
+
+    h1 {
+        text-align: center;
+        line-height: 10vmin;
+
+        &::after,
+        &::before {
+            display: none;
+        }
+
+        a {
+            display: inline-block;
+            background: transparent url(/images/fusionstrings-logo-alt-optimized.svg) center center no-repeat;
+            text-indent: -9999px;
+            height: 100px;
+            width: 300px;
+            background-size: cover;
+        }
+    }
+}
+
+
+nav {
+    margin: 10vw 0;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        font-size: 1rem;
+        font-family: 'Bebas Neue', cursive;
+        justify-content: space-between;
+
+        li {
+            margin: 0 20px 0 0;
+
+            a {
+                color: #ff0088;
+            }
+        }
+    }
+}
+
+main fusionstrings-markdown {
+
+    h2,
+    h2+p {
+        margin: 0 0 2vw;
+        font-size: var(--font-size-xxxl);
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    h2+p {
+        font-weight: normal;
+    }
+
+    p:last-of-type {
+        margin-top: 5vh;
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
