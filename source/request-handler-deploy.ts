@@ -24,7 +24,7 @@ async function requestHandler(request: Request): Promise<Response> {
     } catch (error) {
         console.error(error.message || error.toString());
 
-        const templateURL = new URL('../www/404.html', import.meta.url).toString();
+        const templateURL = new URL('./templates/404.html', import.meta.url).toString();
         const notFound = await fetch(templateURL);
 
         return new Response(notFound.body, { status: 404 });
