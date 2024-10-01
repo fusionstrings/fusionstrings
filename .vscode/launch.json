@@ -8,7 +8,7 @@
             "request": "launch",
             "name": "Launch Program",
             "type": "node",
-            "program": "${workspaceFolder}/server.ts",
+            "program": "${workspaceFolder}/source/request-handler.ts",
             "cwd": "${workspaceFolder}",
             "env": {},
             "runtimeExecutable": "/Users/fusionstrings/.deno/bin/deno",

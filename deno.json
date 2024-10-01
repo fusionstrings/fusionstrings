@@ -1,4 +1,5 @@
 {
+  "name": "@fusionstrings/www",
   "compilerOptions": {
     "allowJs": true,
     "lib": [
@@ -13,8 +14,12 @@
     "exclude": [],
     "include": []
   },
-  "exports": "./server.ts",
+  "exports": {
+    ".": "./server.ts",
+    "./home": "./home.ts"
+  },
   "imports": {
+    "#server-importmap": "./deno.json",
     "#browser-importmap": "./source/importmaps/importmap.json",
     "#comark": "https://deno.land/x/comrak@0.1.1/mod.ts",
     "#home": "./source/home.ts",
@@ -26,13 +31,11 @@
     "@std/http": "jsr:@std/http@^1.0.7",
     "linkedom": "npm:linkedom@^0.18.5"
   },
-  "name": "@fusionstrings/www",
   "tasks": {
     "bundle": "deno run --allow-env --allow-read --allow-write --allow-net source/functions/bundle.ts",
     "dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch source/request-handler.ts",
     "dnt": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run source/functions/dnt.ts",
     "dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src source/generated/esm --dist www --sourcemap",
     "start": "deno run --allow-net --allow-env --allow-read server.ts"
-  },
-  "version": "0.1.0"
+  }
 }
