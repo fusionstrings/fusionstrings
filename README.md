@@ -12,4 +12,4 @@ I am passionate about crafting immersive user experiences...
 * [Github](https://github.com/fusionstrings)
 * [Twitter](https://twitter.com/fusionstrings)
 * [Linkedin](https://www.linkedin.com/in/fusionstrings)
-* [Download CV](/pdf/dilip-shukla-resume.pdf)
+* [Download CV](source/pdf/dilip-shukla-resume.pdf)
