@@ -1,6 +1,6 @@
 # fusionstrings: Frontend Web Developer
 
-[fusionstrings](../www/images/fusionstrings-logo-alt-optimized.svg)
+[fusionstrings](source/images/fusionstrings-logo-alt-optimized.svg)
 
 ## Hello!
 
