@@ -1,4 +1,4 @@
-import { requestHandler } from "#request-handler";
+import { requestHandler } from "@fusionstrings/www/request-handler";
 import { onListen } from "#on-listen";
 
 const PORT  =  Deno.env.get('PORT');
