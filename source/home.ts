@@ -44,30 +44,36 @@ async function requestHandlerHTTP(request: Request) {
     //   return markdownElement
     // }))
 
-    const markdownElements = [];
+    // const markdownElements = [];
 
-    for (const markdownElement of document.querySelectorAll('fusionstrings-markdown')) {
+    // for (const markdownElement of document.querySelectorAll('fusionstrings-markdown')) {
+    //   const src = markdownElement.getAttribute('src');
+
+    //   if (src) {
+    //     markdownElements.push({ element: markdownElement, src });
+    //     // const markdownURL = new URL(`./${src}`, import.meta.url).toString()
+    //     // const markdownResponse = await fetch(markdownURL)
+    //     // const markdown = await markdownResponse.text()
+
+    //     // const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
+    //     // markdownElement.innerHTML = html
+    //   }
+    // }
+
+    // Process all markdown elements in parallel
+    const markdownElements = document.querySelectorAll('fusionstrings-markdown')
+    await Promise.all(markdownElements.map(async (markdownElement) => {
       const src = markdownElement.getAttribute('src');
 
       if (src) {
-        markdownElements.push({ element: markdownElement, src });
-        // const markdownURL = new URL(`./${src}`, import.meta.url).toString()
-        // const markdownResponse = await fetch(markdownURL)
-        // const markdown = await markdownResponse.text()
 
-        // const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
-        // markdownElement.innerHTML = html
+        const markdownURL = new URL(`./${src}`, import.meta.url).toString();
+        const markdownResponse = await fetch(markdownURL);
+        const markdown = await markdownResponse.text();
+
+        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS);
+        markdownElement.innerHTML = html;
       }
-    }
-
-    // Process all markdown elements in parallel
-    await Promise.all(markdownElements.map(async ({ element, src }) => {
-      const markdownURL = new URL(`./${src}`, import.meta.url).toString();
-      const markdownResponse = await fetch(markdownURL);
-      const markdown = await markdownResponse.text();
-
-      const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS);
-      element.innerHTML = html;
     }));
 
     const response = document.toString();
