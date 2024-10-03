@@ -24,7 +24,10 @@ async function requestHandlerHTTP(request: Request) {
     const template = fetch(templateURL);
     // const html = await template.text();
 
-    const { document } = parseHTML(html);
+    // const { document } = parseHTML(html);
+
+    // Parse HTML in parallel with fetching the template
+    const { document } = parseHTML(await (await template).text());
 
     // await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
 
