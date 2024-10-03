@@ -21,38 +21,25 @@ async function requestHandlerHTTP(request: Request) {
   try {
     const templateURL = new URL("./templates/page.html", import.meta.url)
       .toString();
-    const template = await fetch(templateURL);
-    const html = await template.text();
 
-    const { document } = parseHTML(html);
+    const template = fetch(templateURL);
 
-    // await Promise.all(Array.from(document.querySelectorAll('fusionstrings-markdown')).map(async (markdownElement) => {
+    const { document } = parseHTML(await (await template).text());
 
-    //   const src = markdownElement.getAttribute('src');
+    const markdownElements = document.querySelectorAll('fusionstrings-markdown');
 
-    //   if (src) {
-    //     const markdownURL = new URL(src, request.url).toString()
-    //     const markdownResponse = await fetch(markdownURL)
-    //     const markdown = await markdownResponse.text()
-
-    //     const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
-    //     markdownElement.innerHTML = html
-    //   }
-    //   return markdownElement
-    // }))
-
-    for await (const markdownElement of document.querySelectorAll('fusionstrings-markdown')) {
+    await Promise.all(markdownElements.map(async (markdownElement) => {
       const src = markdownElement.getAttribute('src');
 
       if (src) {
-        const markdownURL = new URL(`./${src}`, import.meta.url).toString()
-        const markdownResponse = await fetch(markdownURL)
-        const markdown = await markdownResponse.text()
+        const markdownURL = new URL(`./${src}`, import.meta.url).toString();
+        const markdownResponse = await fetch(markdownURL);
+        const markdown = await markdownResponse.text();
 
-        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS)
-        markdownElement.innerHTML = html
+        const html = await comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS);
+        markdownElement.innerHTML = html;
       }
-    }
+    }));
 
     const response = document.toString();
 
