@@ -1,13 +1,13 @@
-import { requestHandler } from "@fusionstrings/www/request-handler";
-import { onListen } from "#on-listen";
+import { requestHandler } from '@fusionstrings/www/request-handler';
+import { onListen } from '#on-listen';
 
-const PORT  =  Deno.env.get('PORT');
+const PORT = Deno.env.get('PORT');
 
 const serverOptions: Deno.ServeOptions = {
-    onListen,
-    port: PORT ? parseInt(PORT, 10) : 1729
-}
+	onListen,
+	port: PORT ? parseInt(PORT, 10) : 1729,
+};
 
 if (import.meta?.main) {
-    Deno.serve(serverOptions, requestHandler);
+	Deno.serve(serverOptions, requestHandler);
 }

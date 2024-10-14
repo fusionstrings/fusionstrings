@@ -1,11 +1,11 @@
 body {
-    background-position: 40vw 2vh;
+	background-position: 40vw 2vh;
 }
 
-main{
-    font-size: var(--font-size-lg);
+main {
+	font-size: var(--font-size-lg);
 }
 
 nav {
-    margin: 3vw auto;
+	margin: 3vw auto;
 }
