@@ -1,11 +1,10 @@
-import { Markdown } from "#markdown";
+import { Markdown } from '#markdown';
 
 function main() {
-
-    customElements.define(
-        "fusionstrings-markdown",
-        Markdown,
-    );
+	customElements.define(
+		'fusionstrings-markdown',
+		Markdown,
+	);
 }
 
-export { main }
+export { main };

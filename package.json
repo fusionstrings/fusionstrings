@@ -1,19 +1,19 @@
 {
-  "name": "@fusionstrings/www",
-  "version": "1.0.0",
-  "description": "website",
-  "exports": {
-    ".": "./www/dom/home.js",
-    "./custom-elements/markdown": "./www/custom-elements/markdown.js"
-  },
-  "imports": {
-    "#markdown": "./www/custom-elements/markdown.js"
-  },
-  "scripts": {
-    "bundle": "pkgroll --src source/generated/esm --dist www --sourcemap"
-  },
-  "dependencies": {
-    "pkgroll": "^2.5.0"
-  },
-  "type": "module"
+	"name": "@fusionstrings/www",
+	"version": "1.0.0",
+	"description": "website",
+	"exports": {
+		".": "./www/dom/home.js",
+		"./custom-elements/markdown": "./www/custom-elements/markdown.js"
+	},
+	"imports": {
+		"#markdown": "./www/custom-elements/markdown.js"
+	},
+	"scripts": {
+		"bundle": "pkgroll --src source/generated/esm --dist www --sourcemap"
+	},
+	"dependencies": {
+		"pkgroll": "^2.5.0"
+	},
+	"type": "module"
 }

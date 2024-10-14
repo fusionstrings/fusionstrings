@@ -2,14 +2,15 @@
 
 ## Hello!
 
-My name is Dilip
+My name is Dilip.
+
 I am passionate about crafting immersive user experiences...
 
 #ForTheWeb
 
 **Links:**
 
-* [Github](https://github.com/fusionstrings)
-* [X](https://x.com/fusionstrings)
-* [Linkedin](https://www.linkedin.com/in/fusionstrings)
-* [Download CV](source/pdf/dilip-shukla-resume.pdf)
+- [Github](https://github.com/fusionstrings)
+- [X](https://x.com/fusionstrings)
+- [Linkedin](https://www.linkedin.com/in/fusionstrings)
+- [Download CV](source/pdf/dilip-shukla-resume.pdf)
