@@ -1,6 +1,8 @@
 import { parseHTML } from 'linkedom';
 import * as comrak from '#comark';
 
+import { notFound } from '#404';
+
 await comrak.init();
 
 const MARKDOWN_OPTIONS: comrak.ComrakOptions = {
@@ -54,12 +56,10 @@ async function requestHandlerHTTP(): Promise<Response> {
 		return new Response(response, {
 			headers: { 'content-type': 'text/html' },
 		});
-	} catch (error) {
-		console.error(error.message || error.toString());
+	} catch (error: unknown) {
+		console.error((error as Error).message || (error as Error).toString());
 
-		return new Response('404', {
-			headers: { 'content-type': 'text/html' },
-		});
+		return notFound();
 	}
 }
 

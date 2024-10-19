@@ -1,4 +1,7 @@
 import { serveFile } from '@std/http';
+
+import { notFound } from '#404';
+
 import browserImportmap from '#browser-importmap' with { type: 'json' };
 type BrowserAssets = keyof typeof browserImportmap['imports'];
 
@@ -23,15 +26,11 @@ async function requestHandler(request: Request): Promise<Response> {
 		}
 
 		const { requestHandlerHTTP } = await import(`#home`);
-		return requestHandlerHTTP(request);
-	} catch (error) {
-		console.error(error.message || error.toString());
+		return requestHandlerHTTP();
+	} catch (error: unknown) {
+		console.error((error as Error).message || (error as Error).toString());
 
-		const templateURL = new URL('./templates/404.html', import.meta.url)
-			.toString();
-		const notFound = await fetch(templateURL);
-
-		return new Response(notFound.body, { status: 404 });
+		return notFound();
 	}
 }
 
@@ -39,4 +38,4 @@ export { requestHandler };
 
 export default {
 	fetch: requestHandler,
-};
+} satisfies Deno.ServeDefaultExport;

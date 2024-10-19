@@ -3,7 +3,7 @@ import { onListen } from '#on-listen';
 
 const PORT = Deno.env.get('PORT');
 
-const serverOptions: Deno.ServeOptions = {
+const serverOptions = {
 	onListen,
 	port: PORT ? parseInt(PORT, 10) : 1729,
 };
