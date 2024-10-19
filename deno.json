@@ -39,6 +39,7 @@
 		"@deno/dnt": "jsr:@deno/dnt@^0.41.3",
 		"@deno/emit": "jsr:@deno/emit@^0.45.0",
 		"@std/http": "jsr:@std/http@^1.0.7",
+		"#404": "./source/404.ts",
 		"#browser-importmap": "./source/importmaps/importmap.json",
 		"#comark": "https://deno.land/x/comrak@0.1.1/mod.ts",
 		"#custom-elements/markdown": "./source/custom-elements/markdown.ts",

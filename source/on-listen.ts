@@ -1,8 +1,8 @@
-function onListen({ port, hostname }: Deno.ServeOptions) {
+function onListen({ port, hostname }: Deno.NetAddr) {
 	try {
 		console.log(`Server started at http://${hostname}:${port}`);
-	} catch (error) {
-		console.error(error.message || error.toString());
+	} catch (error: unknown) {
+		console.error((error as Error).message || (error as Error).toString());
 		throw error;
 	}
 }
