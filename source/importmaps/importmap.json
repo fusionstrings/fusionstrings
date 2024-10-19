@@ -13,7 +13,6 @@
 		"#dom/home.js.map": "./www/dom/home.js.map",
 		"#favicon.ico": "./source/images/favicon/favicon.ico",
 		"#functions/markdown.js": "./www/functions/markdown.js",
-		"#home": "./source/templates/page.html",
 		"#images/apple-touch-icon.png": "./source/images/favicon/apple-touch-icon.png",
 		"#dilip-kumar-shukla.jpg": "./source/images/dilip-kumar-shukla.jpg",
 		"#images/favicon-16x16.png": "./source/images/favicon/favicon-16x16.png",
