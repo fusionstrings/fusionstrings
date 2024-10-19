@@ -8,13 +8,13 @@
 		"singleQuote": true,
 		"exclude": [
 			"www",
-			"source/generated"
+			"package"
 		]
 	},
 	"lint": {
 		"exclude": [
 			"www",
-			"source/generated"
+			"package"
 		]
 	},
 	"compilerOptions": {
@@ -36,21 +36,21 @@
 		"./request-handler": "./source/request-handler.ts"
 	},
 	"imports": {
-		"#browser-importmap": "./source/importmaps/importmap.json",
-		"#comark": "https://deno.land/x/comrak@0.1.1/mod.ts",
-		"#home": "./source/home.ts",
-		"#markdown": "./source/custom-elements/markdown.ts",
-		"#on-listen": "./source/on-listen.ts",
-		"#server-importmap": "./deno.json",
 		"@deno/dnt": "jsr:@deno/dnt@^0.41.3",
 		"@deno/emit": "jsr:@deno/emit@^0.45.0",
 		"@std/http": "jsr:@std/http@^1.0.7",
+		"#browser-importmap": "./source/importmaps/importmap.json",
+		"#comark": "https://deno.land/x/comrak@0.1.1/mod.ts",
+		"#custom-elements/markdown": "./source/custom-elements/markdown.ts",
+		"#home": "./source/home.ts",
+		"#on-listen": "./source/on-listen.ts",
+		"#server-importmap": "./deno.json",
 		"linkedom": "npm:linkedom@^0.18.5"
 	},
 	"tasks": {
 		"dev": "deno task dom && deno serve --allow-net --allow-env --allow-read --watch source/request-handler.ts",
 		"dnt": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run source/functions/dnt.ts",
-		"dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src source/generated/esm --dist www --sourcemap",
+		"dom": "deno task dnt && deno run --allow-read --allow-ffi --allow-env --allow-sys --allow-write npm:pkgroll --src package/esm --dist www --sourcemap",
 		"start": "deno run --allow-net --allow-env --allow-read server.ts",
 		"style": "deno fmt && deno lint -- --fix"
 	}

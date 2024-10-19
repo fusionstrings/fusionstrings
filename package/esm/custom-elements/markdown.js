@@ -31,7 +31,7 @@ class Markdown extends HTMLElement {
             fetch(src)
                 .then((response) => response.text())
                 .then((markdown) => {
-                import('../mod-D3z-qOzY.js').then((comrak) => {
+                import('../deps/deno.land/x/comrak@0.1.1/mod.js').then((comrak) => {
                     comrak.init().then(() => {
                         const html = comrak.markdownToHTML(markdown, MARKDOWN_OPTIONS);
                         this.innerHTML = html;
@@ -41,6 +41,4 @@ class Markdown extends HTMLElement {
         }
     }
 }
-
 export { Markdown };
-//# sourceMappingURL=markdown.js.map

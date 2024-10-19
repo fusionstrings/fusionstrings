@@ -1,4 +1,4 @@
-import type { ComrakOptions } from '#comark';
+import type { ComrakOptions } from '../deps/deno.land/x/comrak@0.1.1/mod.js';
 
 const MARKDOWN_OPTIONS: ComrakOptions = {
 	extension: {
@@ -42,7 +42,7 @@ class Markdown extends HTMLElement {
 			fetch(src)
 				.then((response) => response.text())
 				.then((markdown) => {
-					import('#comark').then((comrak) => {
+					import('../deps/deno.land/x/comrak@0.1.1/mod.js').then((comrak) => {
 						comrak.init().then(() => {
 							const html = comrak.markdownToHTML(
 								markdown,

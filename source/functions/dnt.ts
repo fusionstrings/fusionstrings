@@ -1,10 +1,15 @@
 import { build, emptyDir } from '@deno/dnt';
 
-await emptyDir('./source/generated');
+const OUT_DIR = './package';
+
+await emptyDir(OUT_DIR);
 
 await build({
-	entryPoints: ['source/dom/home.ts', 'source/custom-elements/markdown.ts'],
-	outDir: './source/generated',
+	entryPoints: ['source/dom/home.ts', {
+		name: './custom-elements/markdown',
+		path: 'source/custom-elements/markdown.ts',
+	}],
+	outDir: OUT_DIR,
 	shims: {
 		// see JS docs for overview and more options
 		deno: true,
