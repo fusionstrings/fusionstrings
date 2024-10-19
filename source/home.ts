@@ -30,22 +30,24 @@ async function requestHandlerHTTP(): Promise<Response> {
 			'fusionstrings-markdown',
 		);
 
-		await Promise.all(markdownElements.map(async (markdownElement) => {
-			const src = markdownElement.getAttribute('src');
+		await Promise.all(
+			Array.from(markdownElements).map(async (markdownElement) => {
+				const src = markdownElement.getAttribute('src');
 
-			if (src) {
-				const markdownURL = new URL(`./${src}`, import.meta.url)
-					.toString();
-				const markdownResponse = await fetch(markdownURL);
-				const markdown = await markdownResponse.text();
+				if (src) {
+					const markdownURL = new URL(`./${src}`, import.meta.url)
+						.toString();
+					const markdownResponse = await fetch(markdownURL);
+					const markdown = await markdownResponse.text();
 
-				const html = await comrak.markdownToHTML(
-					markdown,
-					MARKDOWN_OPTIONS,
-				);
-				markdownElement.innerHTML = html;
-			}
-		}));
+					const html = comrak.markdownToHTML(
+						markdown,
+						MARKDOWN_OPTIONS,
+					);
+					markdownElement.innerHTML = html;
+				}
+			}),
+		);
 
 		const response = document.toString();
 

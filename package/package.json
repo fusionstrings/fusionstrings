@@ -1,0 +1,25 @@
+{
+  "name": "@fusionstrings/www",
+  "description": "fusionstrings website dom",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusionstrings/fusionstrings.github.io.git"
+  },
+  "module": "./esm/dom/home.js",
+  "exports": {
+    ".": {
+      "import": "./esm/dom/home.js"
+    },
+    "./custom-elements/markdown": {
+      "import": "./esm/custom-elements/markdown.js"
+    }
+  },
+  "scripts": {
+    "test": "node test_runner.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "picocolors": "^1.0.0"
+  },
+  "_generatedBy": "dnt@dev"
+}

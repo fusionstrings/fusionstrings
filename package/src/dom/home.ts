@@ -1,4 +1,4 @@
-import { Markdown } from '#custom-elements/markdown';
+import { Markdown } from '../custom-elements/markdown.js';
 
 function main() {
 	customElements.define(
